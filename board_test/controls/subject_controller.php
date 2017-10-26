@@ -1,5 +1,5 @@
 <?php
-include 'model.php';
+include $_SERVER['DOCUMENT_ROOT']."\board_test\models\model.php";
 class subject_control
 {       private $model;
     function __construct()

@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
     <style>
         body{
             width: 1000px;
@@ -23,7 +23,7 @@
 </head>
 <body>
 <div id="login">
-    <? include 'login_controller.php';
+    <? include $_SERVER['DOCUMENT_ROOT']."\board_test\controls\login_controller.php";
     $log_handler=new login_control();
     $log_handler->check_mode();
     ?>
@@ -32,14 +32,14 @@
 <div id="main">
 <?php
 
-include 'subject_controller.php';
+include $_SERVER['DOCUMENT_ROOT']."\board_test\controls\subject_controller.php";
 $subject_handler=new subject_control();
 if(!isset($_POST['mode'])) {
     $board_id = $_GET["board_id"];
     $subject_handler->show_record($board_id);
 
 //코멘트 영역
-include 'comment_controller.php';
+    include $_SERVER['DOCUMENT_ROOT']."\board_test\controls\comment_controller.php";
 $comment_handler=new comment_control();
     //댓글 등록시 DB에 등록
     if (isset($_POST['comment'])) {

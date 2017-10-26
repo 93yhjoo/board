@@ -9,7 +9,7 @@ class customer{
         $this->level="customer";
     }
 }
-include  'login_model.php';
+include  $_SERVER['DOCUMENT_ROOT']."\board_test\models\login_model.php";
 //로그 아웃 쿠키 만료기한 설정.
 class login_control{
     private $model;

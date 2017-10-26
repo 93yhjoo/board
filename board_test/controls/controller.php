@@ -1,6 +1,6 @@
 
 <?php
-include 'model.php';
+include $_SERVER['DOCUMENT_ROOT']."\board_test\models\model.php";
 const size_page = 10;
 
 class control{

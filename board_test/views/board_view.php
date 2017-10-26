@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
 
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="../css/bootstrap.css">
 
     <style>
         body{
@@ -19,7 +19,9 @@
  <?
  //사용자 객체 생성.
 
- include 'login_controller.php';
+//$_server['document_root']==현재 폴더의 루트
+ include $_SERVER['DOCUMENT_ROOT']."\board_test\controls\login_controller.php";
+        echo $_SERVER['DOCUMENT_ROOT']."<br>";
             $log_handler=new login_control();
             $log_handler->check_mode();
 
@@ -34,7 +36,7 @@
 
     <!--글 목록 공간-->
 <div id="middle">
-    <?include 'controller.php';
+    <?include $_SERVER['DOCUMENT_ROOT']."\board_test\controls\controller.php";
         $hendler=new control();
         $hendler->set_page();
    $page=$hendler->get_page();

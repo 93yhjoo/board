@@ -1,5 +1,5 @@
 <?php
-include  'comment_model.php';
+include $_SERVER['DOCUMENT_ROOT']."\board_test\models\comment_model.php";
 const comment_page=10;
 class comment_control{
 
