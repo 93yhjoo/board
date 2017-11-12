@@ -8,7 +8,7 @@
         }
     </style>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="../js/bootstrap.js"></script>
     <script>
       function create_dash(arg_bid,argcid) {
             var address="view_subject.php?board_id="+arg_bid;
@@ -57,7 +57,7 @@ else{
 ?>
 </div>
 <div id="footer">
-    <input type='button' class='btn btn-info' value='글목록' onclick="location.replace('http://127.0.0.1/board_view.php');">
+    <input type='button' class='btn btn-info' value='글목록' onclick="location.replace('http://127.0.0.1:8080/board_test/views/board_view.php');">
 </div>
 
 

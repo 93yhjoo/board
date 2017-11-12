@@ -25,11 +25,11 @@ function create_list($page_arg){
         $_SESSION['mode']=2;
         $first=$_GET['select_box'];
         $second=$_GET['search'];
-        $_SESSION['where']="board_view.php?select_box=$first&search=$second&";
+        $_SESSION['where']="../views/board_view.php?select_box=$first&search=$second&";
 }
 else{
     $_SESSION['mode']=1;
-    $_SESSION['where']="board_view.php?&";
+    $_SESSION['where']="../views/board_view.php?&";
     }
     $total_page = pagenation();
     $current_page = $this->page;
@@ -55,9 +55,9 @@ else{
                 for($j=1;$j<$record[3];$j++){
                     $string.="&raquo;&raquo;";
                 }
-                echo "<td>$string RE <a href='view_subject.php?board_id=$record[0]'>" . $record[5] . "</a></td>";
+                echo "<td>$string RE <a href='../views/view_subject.php?board_id=$record[0]'>" . $record[5] . "</a></td>";
             }else{
-                echo "<td>$record[0]&nbsp;<a href='view_subject.php?board_id=$record[0]'>" . $record[5] . "</a></td>";
+                echo "<td>$record[0]&nbsp;<a href='../views/view_subject.php?board_id=$record[0]'>" . $record[5] . "</a></td>";
             }
             echo "<td>" . $record[4] . "</td>";
             echo "<td>" . $record[7] . "</td>";
@@ -136,14 +136,14 @@ else{
     //만일 접속해 있다면 글쓰기 창 보이기
     if(isset($_COOKIE['cookie'])) {
         echo "<div>";
-        echo "<form action='view_subject.php' method='post'>
+        echo "<form action='../views/view_subject.php' method='post'>
             <input type='hidden' name='mode' value='write'>
             <input type='submit'  class='btn btn-default' value='글쓰기'>
             </form>";
         echo "</div>";
     }
     //검색창
-    echo "<form action='board_view.php' method='get'>";
+    echo "<form action='../views/board_view.php' method='get'>";
     echo "<select name='select_box' class='form-control input-sm'>";
     echo "  <option value='writer_id'>작성자</option>";
     echo "  <option value='subject'>제목</option>";

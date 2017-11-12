@@ -6,7 +6,7 @@ class comment_control{
 
 function confirm($argbid){
 if (isset($_COOKIE['cookie'])) {
-    $address = "view_subject.php?board_id=$argbid";
+    $address = "../views/view_subject.php?board_id=$argbid";
 //로그인 시 댓글 등록창 띄우기
 $this->comment_register($address);
 }

@@ -1,5 +1,7 @@
 
 <?php
+
+include $_SERVER['DOCUMENT_ROOT']."\board_test\models\login_model.php";
 class customer{
     public $id;
     public $password;
@@ -9,10 +11,10 @@ class customer{
         $this->level="customer";
     }
 }
-include  $_SERVER['DOCUMENT_ROOT']."\board_test\models\login_model.php";
+
 //로그 아웃 쿠키 만료기한 설정.
 class login_control{
-    private $model;
+     private $model;
     function __construct()
 {
     $this->model=new login_model();
@@ -48,15 +50,15 @@ class login_control{
     }
     //계정 로그 아웃.
     function logout(){
-        $expire = time()-1000;
-        setcookie("cookie", "", $expire);
-        echo "<script>location.replace('board_view.php')</script>";
+        $expire = time();
+        setcookie("cookie", "", $expire,"/");
+        echo "<script>location.replace('http://127.0.0.1:8080/board_test/views/board_view.php')</script>";
     }
     //계정 가입
     function register_data($obj){
         $this->model->register($obj);
         echo" <script>alert('성공적으로 가입되었습니다 계정로그인 해주세요')</script>";
-        echo "<script>location.replace('board_view.php')</script>";
+        echo "<script>location.replace('http://127.0.0.1:8080/board_test/views/board_view.php')</script>";
     }
     //계정 탈퇴
     function delete_data(){
@@ -76,7 +78,7 @@ function login_window(){
         <h4 class='modal-title' id='LoginModalLabel'>로그인창</h4>
       </div>
       <div class='modal-body''>
-        <form action='board_view.php' method='post'>
+        <form action='../views/board_view.php' method='post'>
         <input type='hidden' name='user_mode' value='user_login'>
           <div class='form-group'>
             <label for='id' class='control-label'>아이디</label>
@@ -119,7 +121,7 @@ $(document).ready(function(){
         <h4 class='modal-title' id='LoginModalLabel'>회원가입창</h4>
       </div>
       <div class='modal-body''>
-        <form action='board_view.php' method='post'>
+        <form action='../views/board_view.php' method='post'>
         <input type='hidden' name='user_mode' value='user_registry'>
           <div class='form-group'>
             <label for='id' class='control-label'>아이디</label>
@@ -208,11 +210,12 @@ function check($id, $password)
         $s_id = session_id();
         //클라이언트 접속시 로그인 유지 관련 cookie에 대한 s_id 정보 DB저장.
         //microtime
-        $expire = time() + 600;
+        $expire = time() + 60;
         $this->model->put_login($id, $s_id, $expire);
         setcookie("cookie", $s_id, $expire, "/");
-        echo "<script>location.replace('board_view.php')</script>";
-    } else {
+        echo "<script>location.replace('http://127.0.0.1:8080/board_test/views/board_view.php')</script>";
+    }
+    else {
     echo" <script>alert('가입한 계정으로 로그인 해주세요')</script>";
       $this->login_window();
     }
@@ -222,15 +225,15 @@ function check($id, $password)
 function get_login(){
     $_SESSION['user']=$this->model->login_info();
    echo "<div class='btn-group'>";
-    echo "<form style='display: inline' action='board_view.php' method='post'>";
+    echo "<form style='display: inline' action='./board_view.php' method='post'>";
     echo "<input type='hidden' name='user_mode' value='user_logout'>";
     echo "<button type='submit'  class='btn btn-primary'>로그아웃</button>";
     echo "</form>";
-    echo "<form style='display: inline' action='board_view.php' method='post'>";
+    echo "<form style='display: inline' action='./board_view.php' method='post'>";
     echo "<input type='hidden' name='user_mode' value='user_info'>";
     echo "<button type='submit'  class='btn btn-primary'>개인 정보</button>";
     echo "</form>";
-    echo "<form style='display: inline' action='board_view.php' method='post'>";
+    echo "<form style='display: inline' action='' method='post'>";
     echo "<input type='hidden' name='user_mode' value='user_delete'>";
     echo "<button type='submit'  class='btn btn-primary'>계정 탈퇴</button>";
     echo "</form>";

@@ -52,7 +52,7 @@ class subject_control
     function write_form()
     {
         echo "
-<form action='view_subject.php' method='post'>
+<form action='../views/view_subject.php' method='post'>
 <p>제목<input type='text' name='subject'></p>
 <p>내용</p>
 <textarea style='width:220px; height:340px; resize: none' name='contents'>
@@ -67,7 +67,7 @@ class subject_control
 function access_answer(){
     $obj = see_record($_POST["board_id"]);
     echo "
-<form action='view_subject.php' method='post'>
+<form action='../views/view_subject.php' method='post'>
 <p>제목<input type='text' name='subject' value='$obj->subject'></p>
 <p>내용</p>
 <textarea style='width:220px; height:340px; resize: none' name='contents'>
@@ -84,7 +84,7 @@ function access_answer(){
     {
         $obj = see_record($_POST["board_id"]);
         echo "
-<form action='view_subject.php' method='post'>
+<form action='../views/view_subject.php' method='post'>
 <p>제목<input type='text' name='subject' value='$obj->subject'></p>
 <p>내용</p>
 <textarea style='width:220px; height:340px; resize: none' name='contents' >$obj->contents
@@ -116,7 +116,7 @@ function access_answer(){
         }
         $obj = $this->model->login_info();
         input_record($obj->id, $subject, $contents);
-        echo "<script>window.location.replace('http://127.0.0.1/board_view.php')</script>";
+        echo "<script>window.location.replace('http://127.0.0.1:8080/board_test/views/board_view.php')</script>";
     }
 
 //글 수정
@@ -152,19 +152,19 @@ function access_answer(){
         if (isset($_COOKIE['cookie'])) {
             if ($this->permission($result_obj) === true) {
                 echo "<div>";
-                echo "<form action='view_subject.php' method='post'>
+                echo "<form action='../views/view_subject.php' method='post'>
       <input type='hidden' name='board_id' value='$req'>
        <input type='hidden' name='mode' value='access_update'>
 <input type='submit' value='수정'></form>";
 
-                echo "<form action='view_subject.php' method='post'>
+                echo "<form action='../views/view_subject.php' method='post'>
     <input type='hidden' name='board_id' value='$req'>
      <input type='hidden' name='mode' value='delete'>
     <input type='submit' value='삭제'></form>";
                 echo "</div>";
             }
 
-                echo "<form action='view_subject.php' method='post'>
+                echo "<form action='../views/view_subject.php' method='post'>
     <input type='hidden' name='board_id' value='$req'>
      <input type='hidden' name='mode' value='answer'>
     <input type='submit' value='답글 달기'></form>";
@@ -178,7 +178,7 @@ function access_answer(){
     {
         $b_id = $_POST['board_id'];
         delete_record($b_id);
-        echo "<script>window.location.replace('http://127.0.0.1/board_view.php')</script>";
+        echo "<script>window.location.replace('http://127.0.0.1:8080/board_test/views/board_view.php')</script>";
     }
 
 }
